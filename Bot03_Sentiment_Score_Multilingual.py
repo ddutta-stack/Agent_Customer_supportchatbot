@@ -4,12 +4,16 @@ import gradio as gr
 
 ## Deepsek Url
 deepseek_url = "http://localhost:11434/api/generate"
+global output_language
 # Function to perform sentiment analysis as positive or negative or neutral
 def sentiment_analysis(text,language="English"):
+    
     prompt = f"Classify the sentiment of the following text(in {language}) as positive, negative, or neutral: {text}"
     payload = {
         "model": "deepseek-r1:1.5b",
         "prompt": prompt,
+        "input_language": language,
+        "output_language": output_language,
         "stream": False,
     }
     response = requests.post(deepseek_url, json=payload)
@@ -29,4 +33,5 @@ interface = gr.Interface(
 )
 # Launch the Gradio interface
 if __name__ == "__main__":
+    output_language = input("Enter the output language (e.g., English, Spanish, French): ")
     interface.launch()
