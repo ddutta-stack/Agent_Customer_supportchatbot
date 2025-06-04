@@ -1,4 +1,4 @@
-# This is a Python script for sentiment analysis using the ___ sentiment analysis tool.
+# This is a Python script for sentiment analysis score using the ___ sentiment analysis tool.
 import requests
 import gradio as gr
 
@@ -6,7 +6,7 @@ import gradio as gr
 deepseek_url = "http://localhost:11434/api/generate"
 # Function to perform sentiment analysis as positive or negative or neutral
 def sentiment_analysis(text):
-    prompt = f"Classify the sentiment of the following text as positive, negative, or neutral: {text}"
+    prompt = f"Classify the sentiment of the following text as positive, negative, or neutral: {text}. But, try to rate the sentiment on a scale of 0 to 1, where 0 is negative, 0.5 is neutral, and 1 is positive."
     payload = {
         "model": "deepseek-r1:1.5b",
         "prompt": prompt,
@@ -18,15 +18,7 @@ def sentiment_analysis(text):
     else:
         return f"Error in sentiment analysis:{response.status_code} {response.text}"
 
-# ## Testing the sentiment analysis function
-# if __name__ == "__main__":
-#     #test_text = "I love the new features of this product!Found it to be very useful."
-#     #test_text = "I did not like the new features of this product!Did not Found it to be very useful."
-#     test_text = "I am fine with the new features of this product!Found it to be okay."
-#     sentiment = sentiment_analysis(test_text)
-#     print(f"Sentiment of the text '{test_text}': {sentiment}")
-
-# Gradio interface for sentiment analysis
+# Gradio interface for sentiment Score analysis
 interface = gr.Interface(
     fn=sentiment_analysis,
     inputs=gr.Textbox(lines=5, label="Enter text for sentiment analysis", placeholder="Type your text here..."),

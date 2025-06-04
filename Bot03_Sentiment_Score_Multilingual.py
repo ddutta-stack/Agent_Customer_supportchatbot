@@ -18,13 +18,6 @@ def sentiment_analysis(text):
     else:
         return f"Error in sentiment analysis:{response.status_code} {response.text}"
 
-# ## Testing the sentiment analysis function
-# if __name__ == "__main__":
-#     #test_text = "I love the new features of this product!Found it to be very useful."
-#     #test_text = "I did not like the new features of this product!Did not Found it to be very useful."
-#     test_text = "I am fine with the new features of this product!Found it to be okay."
-#     sentiment = sentiment_analysis(test_text)
-#     print(f"Sentiment of the text '{test_text}': {sentiment}")
 
 # Gradio interface for sentiment analysis
 interface = gr.Interface(
