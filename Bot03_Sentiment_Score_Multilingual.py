@@ -5,8 +5,8 @@ import gradio as gr
 ## Deepsek Url
 deepseek_url = "http://localhost:11434/api/generate"
 # Function to perform sentiment analysis as positive or negative or neutral
-def sentiment_analysis(text):
-    prompt = f"Classify the sentiment of the following text as positive, negative, or neutral: {text}"
+def sentiment_analysis(text,language="English"):
+    prompt = f"Classify the sentiment of the following text(in {language}) as positive, negative, or neutral: {text}"
     payload = {
         "model": "deepseek-r1:1.5b",
         "prompt": prompt,
